@@ -1,0 +1,6 @@
+[submodule "sfmc-internal-help-desk-magic-patterns"]
+	path = sfmc-internal-help-desk-magic-patterns
+	url = https://github.com/maceinno/SFMC-Internal-Help-Desk-Magic-Patterns.git
+[submodule "sfmc-internal-help-desk"]
+	path = sfmc-internal-help-desk
+	url = https://github.com/maceinno/sfmc-internal-help-desk.git
