@@ -1,0 +1,21 @@
+- [User Role](user_role.md) — Shawn is lead dev at Mace Innovations building Zendesk replacement for SFMC Home Lending
+- [Project State](project_current_state.md) — Feature summary, integrations, URLs, pending items. Live on prod Clerk 2026-04-28 ~23:15 CT. Refreshed 2026-05-03 (spacebar fix + agent presence indicators shipped 2026-05-01; CI lint debt cleanup pending).
+- [Project Structure](project_structure.md) — Parent repo with two submodules under maceinno org; parent holds docs/context
+- [Tech Stack](tech_stack.md) — Next.js + Supabase + Clerk + Vercel; confirmed 2026-04-13
+- [profiles.id = Clerk id](project_profiles_id_is_clerk_id.md) — Create Clerk user first; always upsert on conflict 'id' to avoid racing the user.created webhook
+- [Departments from DB](project_departments_from_db.md) — Use useDepartmentCategories(); never hard-code TICKET_TYPES / DEPARTMENT_CATEGORIES for dropdowns
+- [No agent auto-assign](feedback_no_agent_auto_assign.md) — POST /api/tickets always writes assigned_to=null; only team routing persists
+- [OOO preserves assignments](feedback_ooo_preserve_assignments.md) — OOO only flips the flag; do not bulk-unassign existing tickets
+- [Changelog pattern](feedback_changelog_pattern.md) — User-facing fixes must update both CHANGELOG.md and src/data/changelog.ts
+- [Select onValueChange](feedback_select_onvaluechange.md) — Base UI Select onValueChange passes string | null; wrap with null guard
+- [Select.Value render children](feedback_base_ui_select_value.md) — Base UI Select.Value shows raw value unless given a children render fn; fix when value is a UUID/id
+- [Menu.Item uses onClick](feedback_base_ui_menu_item.md) — Base UI Menu.Item has no onSelect; Radix-style onSelect is silently dropped — use onClick
+- [Vercel Async](feedback_vercel_async.md) — Always await async work in API routes; Vercel kills unawaited operations after response
+- [Verify before claiming](feedback_verify_before_claiming.md) — Browser-test UI fixes; verify dashboard/settings recipes against the live editor before pasting
+- [One branch per feature](feedback_branch_per_feature.md) — Every fix/feature gets its own branch + PR; never combine unrelated changes
+- [Resend Inbound](project_resend_inbound_gotchas.md) — email.received webhook is metadata-only (fetch body via receiving.get), API key needs full access
+- [Supabase Realtime Publication](project_supabase_realtime_publication.md) — tables must be explicitly added to supabase_realtime publication or no events fire
+- [Supabase Management API](reference_supabase_management_api.md) — run arbitrary SQL against any Supabase project via cached CLI token + api.supabase.com/v1
+- [Pending: Invite tracking + backfill](project_pending_invite_tracking.md) — Deferred post-launch; option 1 plan agreed. Phase 10 of the Clerk migration covers the backfill (welcome reblast); steps 1-6 (UI invite-state column + per-row resend) still pending
+- [Project Backlog](project_backlog.md) — Append-style log of deferred/quick-patched items to revisit; survives session loss
+- [Clerk dev → prod migration](project_clerk_migration.md) — CLOSED 2026-04-29. Cutover succeeded 2026-04-28 ~23:15 CT; sub-fallback in RLS stays a few weeks; reference doc only.
